@@ -1,0 +1,101 @@
+<div class="intro">
+  <head>
+    <script
+      src="https://kit.fontawesome.com/yourcode.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <div class="content">
+    <h1 style="font-family: 'Courier New'; font-size: 50px">Basheera Hoosen</h1>
+    <h2 style="font-family: 'Courier New'; font-size: 40px">
+      Software Developer
+    </h2>
+    <br />
+    <p>For any queries please find my contact details below</p>
+    <div class="wrappers" style="margin-top: 5vh">
+      <div class="button">
+        <div class="icon"  (click)="loadLinkedin()"><i class="fab fa-linkedin"  style="color: white;"></i></div>
+        <span> Linkedin</span>
+      </div>
+      <div class="button">
+        <div class="icon"><i class="fas fa-envelope-open" style="color: white;"></i></div>
+        <span><a href="mailto:basheerahoosen@gmail.com">Email</a></span>
+      </div>
+      <div class="button">
+        <div class="icon"><i class="fas fa-phone" style="color: white;"></i></div>
+        <span>081 312 2327</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="login">
+  <div>
+    <p>Sign In To Your Account</p>
+  </div>
+
+  <form
+          #form="ngForm"
+          class="emailInput"
+          name="loginForm"
+          [formGroup]="loginForm"
+        >
+          <mat-form-field appearance="outline" style="width:500px">
+            <mat-label >Email</mat-label>
+            <input
+              formControlName="Username"
+              matInput
+              type="email"
+              name="Username"
+              [pattern]="emailPattern"
+              placeholder="Enter email address"
+              [(ngModel)]="formData.userName"
+              required
+            />
+            <mat-error *ngIf="!loginForm.controls['Username'].valid">
+              Email is required
+            </mat-error>
+          </mat-form-field>
+
+          <div>
+            <mat-form-field appearance="outline" style="width:500px">
+              <mat-label >Password</mat-label>
+              <input
+                formControlName="Password"
+                matInput
+                [type]="hide ? 'password' : 'text'"
+                name="Password"
+                placeholder="Enter password"
+                [(ngModel)]="formData.password"
+                required
+              />
+
+              <button
+                mat-icon-button
+                matSuffix
+                (click)="hide = !hide"
+                (keydown.enter)="$event.preventDefault()"
+                [attr.aria-label]="'Hide Password'"
+                [attr.aria-pressed]="hide"
+              >
+                <mat-icon>
+                  {{ hide ? "visibility_off" : "visibility" }}
+                </mat-icon>
+              </button>
+
+              <mat-error *ngIf="!loginForm.controls['Password'].valid">
+                Password is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <button
+            mat-flat-button
+            class="loginBtn"
+            (click)="login(formData)"
+          >
+            Login
+          </button>
+        </form>
+</div>

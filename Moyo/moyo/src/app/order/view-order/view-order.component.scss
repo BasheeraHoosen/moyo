@@ -1,0 +1,31 @@
+
+.cardHeader{
+  background-color:black;
+  opacity: 0.5;
+  padding-top: 1%;
+  color:white;
+  width: 95%;
+}
+
+.button{
+  border-style: solid;
+  border-color:black;
+  background-color: black;
+  opacity: 0.5;
+  color: white;
+  margin-left: 30px;
+  width: 200px;
+  height: 40px;
+}
+
+.button:hover{
+  border-color: blueviolet;
+  background-color: blueviolet;
+  color: white;
+  opacity: 0.8;
+}
+
+.containerBox{
+  background-color: white;
+  margin: 50px;
+}

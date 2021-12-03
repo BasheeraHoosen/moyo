@@ -1,0 +1,51 @@
+.leftSearch{
+  width: 100%;
+  float: left;
+  background-color: transparent;
+  padding-right: 2%;
+}
+
+.cardHeader{
+  background-color: #DEEAF6;
+  padding-top: 2%;
+  width: 100%;
+}
+
+table{
+ width: 100%;
+}
+
+.table-container{
+ overflow: auto;
+ height: 536px;
+}
+
+.table-container::-webkit-scrollbar{
+display: none;
+}
+
+.matCard{
+border-style:none;
+}
+
+.button{
+  border-style: none;
+  background-color: transparent;
+}
+
+.icon{
+  color: blueviolet;
+}
+
+.containerBox{
+  background-color: white;
+  margin: 50px;
+}
+
+.cardHeading{
+  background-color:black;
+  opacity: 0.5;
+  padding-top: 1%;
+  color:white;
+  width: 100%;
+}

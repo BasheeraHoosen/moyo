@@ -1,0 +1,117 @@
+<div class="containerBox">
+  <mat-card >
+    <mat-card-header
+      class="cardHeader"
+      style="padding-bottom: 1; position: sticky"
+    >
+      <mat-card-title-group style="margin-top: 0.5%">
+        <mat-card-title style="font-weight: 500; width: 200px; float:left;"
+          >Order No. {{ order.orderID }} </mat-card-title
+        >
+        <mat-card-title style="font-weight: 500; width: width: 200px; float:left; margin-left:1150px">
+          {{ order.orderDate | date: "dd MMMM yyyy" }}</mat-card-title
+        >
+      </mat-card-title-group>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div style="padding: 2% 2% 2% 2%; min-width: 100%">
+        <div style="float:left; margin:2px">
+          <mat-form-field appearance="outline" style="width:400px">
+            <mat-label>Client Name </mat-label>
+            <input
+              readonly
+              type="text"
+              matInput
+              value="{{ client.name }} {{ client.surname }}"
+            />
+          </mat-form-field>
+        </div>
+
+        <div style="float:left; margin:2px;">
+          <mat-form-field appearance="outline" style="width:400px">
+            <mat-label>Client Address</mat-label>
+            <input
+              readonly
+              type="text"
+              matInput
+              value="{{ client.address }}"
+            />
+          </mat-form-field>
+        </div>
+
+        <div style="float:left; margin:2px">
+          <mat-form-field appearance="outline" style="width:400px">
+            <mat-label>Client Contact</mat-label>
+            <input
+              readonly
+              type="text"
+              matInput
+              value="{{ client.phone }}"
+            />
+          </mat-form-field>
+        </div>
+
+        <div style="float:left; margin:2px">
+        <mat-form-field appearance="outline" style="width:400px">
+          <mat-label>Order Status </mat-label>
+          <input
+            readonly
+            type="text"
+            matInput
+            value="{{ order.status.orderStatusDesc }}"
+          />
+        </mat-form-field>
+      </div>
+
+        <br />
+        <div>
+          <table mat-table [dataSource]="order.orderLine" style="width: 90%">
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef style="color: blueviolet">
+                Name
+              </th>
+              <td mat-cell *matCellDef="let item">
+                {{ item.product.productName }}
+              </td>
+            </ng-container>
+
+            <!-- Description Column -->
+            <ng-container matColumnDef="desc">
+              <th mat-header-cell *matHeaderCellDef style="color: blueviolet">
+                Description
+              </th>
+              <td mat-cell *matCellDef="let item">
+                {{ item.product.productDesc }}
+              </td>
+            </ng-container>
+
+            <!-- Surname Column -->
+            <ng-container matColumnDef="price">
+              <th style="width: 25vw" mat-header-cell *matHeaderCellDef style="color: blueviolet">
+                Price
+              </th>
+              <td style="width: 25vw" mat-cell *matCellDef="let item">
+                {{ item.product.price.amount | currency: "R" }}
+              </td>
+            </ng-container>
+
+            <tr
+              mat-header-row
+              *matHeaderRowDef="displayedColumns; sticky: true"
+            ></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+          <table style="width: 90%">
+            <tr class="cardHeader">
+              <td>Total</td>
+              <td style="width: 26vw">{{ order.total | currency: "R" }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <button type="button" (click)="onBack()" class="button">Back</button>
+    </mat-card-content>
+  </mat-card>
+</div>

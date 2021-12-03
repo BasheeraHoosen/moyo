@@ -1,0 +1,80 @@
+.cardButton{
+  float: right;
+}
+
+.cardHeader{
+  background-color:black;
+  opacity: 0.5;
+  padding-top: 1%;
+  color:white;
+  width: 100%;
+}
+
+.cardFooter{
+  background-color:black;
+  color: white;
+  opacity: 0.5;
+}
+
+.cardFooter:hover{
+  background-color:blueviolet;
+  color: white;
+  opacity: 0.8;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+
+table{
+  width: 100%;
+ }
+
+ .table-container{
+  overflow: auto;
+
+ }
+
+ .table-container::-webkit-scrollbar{
+ display: none;
+ }
+
+
+.tab{
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+
+.cards{
+  background-color: black;
+}
+
+
+.button{
+  border-style: solid;
+  border-color:black;
+  background-color: black;
+  opacity: 0.5;
+  color: white;
+  margin-left: 20px;
+  margin-top: 20px;
+  width: 200px;
+  height: 40px;
+}
+
+.button:hover{
+  border-color: blueviolet;
+  background-color: blueviolet;
+  color: white;
+  opacity: 0.8;
+}
+
+.containerBox{
+  background-color: white;
+  margin: 50px;
+  padding: 10px;
+  overflow: auto;
+  height: 80vh;
+}

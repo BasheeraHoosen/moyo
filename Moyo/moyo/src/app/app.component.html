@@ -1,0 +1,11 @@
+<div class="container">
+  <mat-toolbar class="navigation">
+    <div>Moyo Assessment</div>
+    <div *ngIf="flag">
+      <span routerLink="/products">Products</span>
+      <span routerLink="/orders">Orders</span>
+      <span (click)="logout()">Logout</span>
+    </div>
+  </mat-toolbar>
+  <router-outlet></router-outlet>
+</div>

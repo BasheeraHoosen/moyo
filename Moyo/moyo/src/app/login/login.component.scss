@@ -1,0 +1,87 @@
+.login{
+  text-align: center;
+  float: right;
+  background-color:white;
+  width: 50vw;
+  height: 67vh;
+  text-align: center;
+  padding-top: 26vh;
+  opacity: 0.8;
+}
+
+.intro{
+  float: left;
+  text-align: center;
+  margin-top: 250px;
+  margin-left: 200px;
+}
+
+.wrappers .button{
+  display: inline-block;
+  height: 60px;
+  width: 60px;
+  opacity: 0.7;
+  margin: 0 5px;
+  overflow: hidden;
+  background: black;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0px 10px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s ease-out;
+}
+
+.wrappers .button:hover{
+  width: 200px;
+}
+.wrappers .button .icon{
+  display: inline-block;
+  height: 60px;
+  width: 60px;
+  text-align: center;
+  border-radius: 50px;
+  box-sizing: border-box;
+  line-height: 60px;
+  transition: all 0.3s ease-out;
+}
+.wrappers .button:hover .icon{
+  background: blueviolet;
+}
+
+.wrappers .button .icon i{
+  font-size: 20px;
+  line-height: 60px;
+  transition: all 0.3s ease-out;
+}
+.wrappers .button:hover .icon i{
+  color: black;
+}
+.wrappers .button span{
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 60px;
+  margin-left: 10px;
+  transition: all 0.3s ease-out;
+}
+.wrappers .button span{
+  color: #4267B2;
+  color: white;
+}
+
+
+.loginBtn{
+  border-style: solid;
+  border-color:black;
+  background-color: black;
+  opacity: 0.5;
+  color: white;
+  margin-left: 30px;
+  width: 200px;
+  height: 40px;
+}
+
+.loginBtn:hover{
+  border-color: blueviolet;
+  background-color: blueviolet;
+  color: white;
+  opacity: 0.8;
+}

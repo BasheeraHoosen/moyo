@@ -1,0 +1,24 @@
+.container{
+  background-image: url(../assets/images/background.svg);
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.navigation{
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  opacity: 0.5;
+  background-color:black;
+  color:white;
+}
+
+span{
+  padding-right: 20px;
+}
+
+span:hover {
+  color:blueviolet;
+}
