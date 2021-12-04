@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { LoginService } from './../../shared/login.service';
 import { OrderService } from './../../shared/order.service';
 import { Component, OnInit,ViewChild } from '@angular/core';
@@ -5,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { map } from 'rxjs/operators';
 import { MatPaginator } from '@angular/material/paginator';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-read-order',
@@ -18,13 +20,13 @@ export class ReadOrderComponent implements OnInit {
   constructor(
     private router: Router,
     private service: OrderService,
-    private security: LoginService
+    private security: LoginService,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
     this.getOrders();
     this.client = this.security.Client;
-    console.log(this.client);
   }
 
   ngAfterViewInit() {
@@ -54,7 +56,9 @@ export class ReadOrderComponent implements OnInit {
   getOrders(){
     this.service.ReadOrders(this.security.User.userID).subscribe((result) => {
       this.dataSource.data = result as any[];
-    })
+    }, (error: HttpErrorResponse) => {
+       this.toastr.error('The system cannot establish a connection with the database!');
+   })
   }
 
 }

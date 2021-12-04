@@ -12,7 +12,7 @@ import { User } from './model/user.model';
 export class AppComponent {
   title = 'moyo';
 
-  flag = false;
+  flag:boolean=true;
   user!: User;
 
   constructor(
@@ -21,7 +21,7 @@ export class AppComponent {
   ){
     this.router.events.subscribe((e) => {
       if (e instanceof NavigationEnd) {
-        if (e.url === '/login' )
+        if (e.url === '/login')
         {
           this.flag = false;
         }
@@ -30,7 +30,6 @@ export class AppComponent {
           this.flag = true;
           this.service.User = JSON.parse( sessionStorage.getItem('Token-User') || "")
           this.service.GetUser(this.service.User.userID);
-          console.log(this.service.User.userID);
           this.service.Client = JSON.parse( sessionStorage.getItem('Client') || "")
         }
       }
@@ -38,6 +37,7 @@ export class AppComponent {
   }
 
   logout(){
+    this.flag = false;
     this.service.Logout();
   }
 }

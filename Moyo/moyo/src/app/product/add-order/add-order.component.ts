@@ -4,6 +4,7 @@ import { Order, OrderLine } from './../../model/order.model';
 import { OrderService } from './../../shared/order.service';
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { HttpErrorResponse } from '@angular/common/http';
 
 export class RequestItem {
   itemID: number = 0;
@@ -24,6 +25,8 @@ export class AddOrderComponent implements OnInit {
     private security: LoginService,
     private router : Router,
   ) {}
+
+  showSpinner: boolean = false;
 
   ngOnInit(): void {
     this.getProducts();
@@ -60,7 +63,9 @@ export class AddOrderComponent implements OnInit {
   getProducts() {
     this.service.ReadProducts().subscribe((result) => {
       this.productList = result as any[];
-    });
+    }, (error: HttpErrorResponse) => {
+      this.toastr.error('The system cannot establish a connection with the database!');
+  });
   }
 
   getItems() {
@@ -95,7 +100,7 @@ export class AddOrderComponent implements OnInit {
     this.total = this.total + request.price;
     localStorage.setItem('Total', JSON.stringify(this.total));
 
-    this.toastr.success('Service added');
+    this.toastr.success('Product added');
     this.refresh();
   }
 
@@ -109,7 +114,7 @@ export class AddOrderComponent implements OnInit {
     }
     localStorage.setItem('items', JSON.stringify(items));
 
-    this.toastr.success('Item Removed');
+    this.toastr.error('Item Removed');
     this.refresh();
   }
 
@@ -117,13 +122,14 @@ export class AddOrderComponent implements OnInit {
     this.order.ClientID = this.security.Client.clientID;
     this.order.Total = this.total;
     this.order.OrderDate = new Date();
-    console.log(this.order);
+
     this.service.PostOrder(this.order).subscribe((result) => {
       this.requestItemList.forEach((element) => {
         this.orderline.OrderID = result as number;
         this.orderline.ProductID = element.itemID;
 
         this.service.PostOrderLine(this.orderline).subscribe(() => {
+          this.toastr.success('Order Processed');
           this.router.navigateByUrl('orders');
           this.total =0;
           localStorage.clear();

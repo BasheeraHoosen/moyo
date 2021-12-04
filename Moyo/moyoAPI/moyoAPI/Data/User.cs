@@ -15,8 +15,9 @@ namespace moyoAPI.Data
 
         public string UserName { get; set; }
         public string Password { get; set; }
-
-
         public virtual Client client { get; set; }
+
+#nullable enable
+        public string? Token { get; set; }
     }
 }

@@ -1,3 +1,4 @@
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { LoginService } from './../shared/login.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -16,6 +17,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private service: LoginService,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -44,11 +46,11 @@ export class LoginComponent implements OnInit {
     }, (error: HttpErrorResponse) => {
        if (error.error.Message != "Email/Password invalid.")
        {
-        console.log("invalid username/password")
+        this.toastr.error('Invalid username or password, please try again');
        }
-
-       else {
-         console.log("The system cannot establish a connection with the database!", "Error");
+       else
+       {
+        this.toastr.error('The system cannot establish a connection with the database!');
        }
     });
   }

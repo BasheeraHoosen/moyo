@@ -46,7 +46,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatPaginatorModule}  from '@angular/material/paginator';
 import { ToastrModule } from 'ngx-toastr';
 
-
 const materialModules = [
   MatRadioModule,
   MatPaginatorModule,

@@ -45,6 +45,7 @@ namespace moyoAPI.Controllers
                     }
                     else 
                     {
+                        refreshUserToken(user);
                         return Ok(user);
                     }
                     
@@ -64,8 +65,7 @@ namespace moyoAPI.Controllers
             }
         }
 
-        [HttpGet("client" +
-            "/{id}")]
+        [HttpGet("client/{id}")]
         public IActionResult GetUser(int id)
         {
             try
@@ -78,6 +78,17 @@ namespace moyoAPI.Controllers
             {
                 return BadRequest(e.Message);
             }
+        }
+
+        public User refreshUserToken(User user)
+        {
+            User User = db.Users.Where(x => x.UserID == user.UserID).FirstOrDefault();
+            if (User.Token == null)
+            {
+                User.Token = Guid.NewGuid().ToString();
+            }
+            db.SaveChanges();
+            return (User);
         }
 
         //hash password 

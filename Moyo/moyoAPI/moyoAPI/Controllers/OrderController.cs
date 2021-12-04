@@ -80,8 +80,8 @@ namespace moyoAPI.Controllers
             try
             {
                 order.OrderDate = DateTime.Now;
-                db.Orders.Add(order);
-                db.SaveChanges();
+                db.Orders.AddAsync(order);
+                db.SaveChangesAsync();
 
                 return Ok(order.OrderID);
             }
@@ -96,8 +96,8 @@ namespace moyoAPI.Controllers
         {
             try
             {
-                db.OrderLines.Add(line);
-                db.SaveChanges();
+                db.OrderLines.AddAsync(line);
+                db.SaveChangesAsync();
 
                 return Ok();
             }
